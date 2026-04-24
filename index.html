@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boreal Construção e Reformas - Obras de Alto Padrão com Gestão Técnica</title>
+  <meta name="description" content="Construção e reforma de alto padrão com gestão técnica, escopo fechado e engenheiro responsável do primeiro ao último dia. Quatro décadas de experiência. Zero obras abandonadas." />
+  <meta name="theme-color" content="#0F2A44" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES - Paleta Boreal
+       Extraída diretamente da logo oficial:
+         - Azul-marinho profundo (estrutura, texto BOREAL)
+         - Azul médio (torre central destacada)
+         - Verde sóbrio (torre lateral - crescimento, natureza)
+    ============================================================ */
+    :root {
+      --navy-deep:    #0A1A2E;   /* fundo escuro principal */
+      --navy:         #0F2A44;   /* azul marinho da logo */
+      --navy-mid:     #1A3A5C;   /* camada intermediária */
+      --blue:         #2A6FA3;   /* azul médio - destaque */
+      --blue-light:   #3D87BE;   /* azul claro - hover */
+      --green:        #4A7D58;   /* verde da logo - CTA principal */
+      --green-dark:   #3A6345;   /* verde escuro - hover CTA */
+      --green-light:  #5E9470;   /* verde claro - detalhes */
+      --white:        #FFFFFF;
+      --off-white:    #F6F8FB;
+      --gray-light:   #E8ECF2;
+      --gray-mid:     #B5BDC9;
+      --gray-text:    #566174;
+      --text-dark:    #0F2A44;
+      --font-main:    'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-btn:   3px;
+      --transition:   0.3s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE - mobile first rigoroso
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    html { scroll-behavior: smooth; scroll-padding-top: 20px; }
+    body {
+      font-family: var(--font-main);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; display: block; height: auto; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; }
+
+    /* ============================================================
+       UTILITY CLASSES
+    ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(26px, 4.2vw, 42px);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      line-height: 1.15;
+      color: var(--navy);
+    }
+    .section-subtitle {
+      font-size: 16px;
+      line-height: 1.75;
+      margin-top: 18px;
+      max-width: 640px;
+      color: var(--gray-text);
+      font-weight: 400;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 17px 36px;
+      font-family: var(--font-main);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: var(--radius-btn);
+      border: none;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+      text-align: center;
+      line-height: 1.2;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(10,26,46,0.28); }
+    .btn:active { transform: translateY(0); }
+    .btn-green  { background: var(--green); color: var(--white); }
+    .btn-green:hover { background: var(--green-dark); }
+    .btn-navy   { background: var(--navy); color: var(--white); }
+    .btn-navy:hover { background: var(--navy-deep); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.7); }
+    .btn-outline:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+       1. HERO SECTION - light "sombreado branco" sobre a foto de obra
+    ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 90px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.72) 0%, rgba(246,248,251,0.86) 100%),
+        url('assets/hero-bg.webp') center/cover no-repeat;
+      color: var(--navy);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 28%, rgba(61,135,190,0.10), transparent 62%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 70%, rgba(232,236,242,0.55) 100%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 880px; width: 100%; }
+
+    .hero-logo {
+      width: clamp(240px, 38vw, 340px);
+      height: auto;
+      margin: 0 auto 32px;
+      display: block;
+      filter: drop-shadow(0 8px 22px rgba(15,42,68,0.14));
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 24px;
+      padding: 7px 16px;
+      border: 1px solid rgba(42,111,163,0.28);
+      border-radius: 2px;
+      background: rgba(42,111,163,0.06);
+    }
+    .hero-headline {
+      font-size: clamp(30px, 5.5vw, 58px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 26px;
+      color: var(--navy);
+    }
+    .hero-headline em {
+      color: var(--green);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .hero-subheadline {
+      font-size: clamp(15px, 1.9vw, 19px);
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--gray-text);
+      max-width: 680px;
+      margin: 0 auto 44px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-buttons .btn { min-width: 220px; }
+    .hero-buttons .btn-green {
+      box-shadow: 0 10px 28px rgba(74,125,88,0.32);
+    }
+    .hero-buttons .btn-green:hover {
+      box-shadow: 0 14px 36px rgba(74,125,88,0.45);
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(15,42,68,0.55);
+      animation: bounce 2.2s infinite;
+    }
+    .hero-scroll svg { width: 18px; height: 18px; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* Prova social */
+    .social-proof {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 56px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(15,42,68,0.12);
+      flex-wrap: wrap;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--navy);
+    }
+    .proof-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(74,125,88,0.12);
+      border: 1px solid rgba(74,125,88,0.32);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .proof-icon svg { width: 20px; height: 20px; stroke: var(--green); }
+    .proof-text { display: flex; flex-direction: column; text-align: left; }
+    .proof-number {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+    }
+    .proof-label {
+      font-size: 10.5px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       3. BENEFÍCIOS (3 COLUNAS) - ataca as 3 dores do ICP
+    ============================================================ */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .benefit-col {
+      padding: 80px 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
+    }
+    .benefit-col:nth-child(1) { background: var(--navy); }
+    .benefit-col:nth-child(2) { background: var(--navy-deep); }
+    .benefit-col:nth-child(3) { background: var(--navy-mid); }
+    .benefit-icon {
+      width: 58px;
+      height: 58px;
+      background: rgba(94,148,112,0.14);
+      border: 1px solid rgba(94,148,112,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .benefit-icon svg { width: 28px; height: 28px; }
+    .benefit-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--green-light);
+    }
+    .benefit-text {
+      font-size: clamp(20px, 2.4vw, 26px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.3;
+      letter-spacing: -0.3px;
+    }
+    .benefit-desc {
+      font-size: 14.5px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    /* ============================================================
+       4. TIPOS DE PROJETO
+    ============================================================ */
+    .examples {
+      padding: 110px 20px;
+      background: var(--off-white);
+      text-align: center;
+    }
+    .examples .section-title { color: var(--navy); }
+    .examples .section-subtitle { color: var(--gray-text); margin: 18px auto 60px; }
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1120px;
+      margin: 0 auto 44px;
+    }
+    .example-card {
+      background: var(--white);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(15,42,68,0.08);
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      transition: transform var(--transition), box-shadow var(--transition);
+      border: 1px solid var(--gray-light);
+    }
+    .example-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 56px rgba(15,42,68,0.16);
+    }
+    .card-header {
+      background: var(--navy);
+      position: relative;
+    }
+    .card-header img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+    .card-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(74,125,88,0.95);
+      color: var(--white);
+      padding: 6px 14px;
+      border-radius: 2px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .card-body {
+      padding: 28px 26px 10px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .card-body h3 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.35;
+      letter-spacing: -0.2px;
+    }
+    .card-body p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--gray-text);
+    }
+    .card-features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 8px;
+    }
+    .card-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text-dark);
+      line-height: 1.55;
+    }
+    .card-features li svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 3px;
+      stroke: var(--green);
+    }
+    .card-footer {
+      background: var(--off-white);
+      padding: 20px 26px;
+      border-top: 1px solid var(--gray-light);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-footer svg { width: 16px; height: 16px; }
+
+    /* ============================================================
+       5. OBRAS REALIZADAS - CARROSSEL
+    ============================================================ */
+    .gallery {
+      padding: 110px 20px 100px;
+      background: var(--white);
+      text-align: center;
+    }
+    .gallery .section-title { color: var(--navy); }
+    .gallery .section-subtitle { color: var(--gray-text); margin: 18px auto 60px; }
+    .carousel-wrapper {
+      position: relative;
+      max-width: 1120px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 20px;
+    }
+    .carousel-slide {
+      flex: 0 0 calc((100% - 40px) / 3);
+      aspect-ratio: 4 / 3;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15,42,68,0.1);
+      position: relative;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .carousel-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(10,26,46,0.35) 100%);
+      pointer-events: none;
+    }
+    .carousel-slide:hover img { transform: scale(1.06); }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      background: var(--white);
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 4px 18px rgba(15,42,68,0.22);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .carousel-btn:hover { background: var(--navy); transform: translateY(-50%) scale(1.05); }
+    .carousel-btn:hover svg { stroke: white; }
+    .carousel-btn svg { width: 20px; height: 20px; stroke: var(--navy); stroke-width: 2.5; fill: none; }
+    .carousel-prev { left: -24px; }
+    .carousel-next { right: -24px; }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 32px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gray-mid);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      padding: 0;
+    }
+    .dot.active { background: var(--blue); transform: scale(1.4); }
+
+    /* ============================================================
+       7. GARANTIMOS SEGURANÇA
+    ============================================================ */
+    .security {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .security-text {
+      background: var(--navy);
+      padding: 90px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+    .security-text .section-label { color: var(--green-light); }
+    .security-text .section-title { color: var(--white); }
+    .security-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.5;
+      letter-spacing: -0.2px;
+    }
+    .security-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--green-light);
+      border-radius: 2px;
+    }
+    .security-text p {
+      font-size: 14.5px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.85;
+    }
+    .security-image {
+      position: relative;
+      background: var(--navy-deep);
+      overflow: hidden;
+      min-height: 480px;
+    }
+    .security-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .security-badge {
+      position: absolute;
+      bottom: 36px;
+      left: 36px;
+      background: var(--green);
+      color: var(--white);
+      padding: 16px 24px;
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      box-shadow: 0 12px 32px rgba(10,26,46,0.45);
+    }
+    .security-badge strong {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+    .security-badge span {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.92;
+    }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    .faq {
+      padding: 110px 20px;
+      background: var(--white);
+    }
+    .faq .container { max-width: 820px; }
+    .faq .section-title { color: var(--navy); text-align: center; }
+    .faq .section-label { text-align: center; }
+    .faq .section-subtitle { color: var(--gray-text); text-align: center; margin: 18px auto 56px; }
+    .faq-item {
+      background: var(--off-white);
+      border-radius: 4px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px rgba(15,42,68,0.05);
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+      border: 1px solid var(--gray-light);
+    }
+    .faq-item:hover { box-shadow: 0 6px 20px rgba(15,42,68,0.1); }
+    .faq-question {
+      width: 100%;
+      padding: 24px 26px;
+      background: none;
+      border: none;
+      font-family: var(--font-main);
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--navy);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      letter-spacing: -0.1px;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--blue);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-question::after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 400px; }
+    .faq-answer p {
+      padding: 0 26px 24px;
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--gray-text);
+    }
+
+    /* ============================================================
+       8. FORMULÁRIO MULTI-STEP
+    ============================================================ */
+    .form-section {
+      padding: 110px 20px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .form-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(74,125,88,0.12), transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(42,111,163,0.1), transparent 50%);
+      pointer-events: none;
+    }
+    .form-section .container { position: relative; z-index: 1; }
+    .form-section .section-label { color: var(--green-light); }
+    .form-section .section-title { color: var(--white); }
+    .form-section .section-subtitle { color: rgba(255,255,255,0.72); margin: 18px auto 56px; }
+
+    .steps-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 48px;
+    }
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .step-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      transition: all var(--transition);
+    }
+    .step-circle.active   { background: var(--green); border-color: var(--green); color: white; }
+    .step-circle.complete { background: var(--blue); border-color: var(--blue); color: white; }
+    .step-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      transition: color var(--transition);
+    }
+    .step-item.active .step-label   { color: var(--green-light); }
+    .step-item.complete .step-label { color: var(--blue-light); }
+    .step-connector {
+      width: 80px;
+      height: 2px;
+      background: rgba(255,255,255,0.14);
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .step-connector-fill {
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      background: var(--blue);
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    .form-card {
+      max-width: 580px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 44px 40px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .form-step { display: none; }
+    .form-step.active { display: block; animation: fadeSlide 0.4s ease; }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(16px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .form-step h3 {
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 26px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.92);
+    }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 9px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px 16px;
+      background: rgba(255,255,255,0.96);
+      border: 2px solid transparent;
+      border-radius: 3px;
+      font-family: var(--font-main);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--navy);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F2A44' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 16px;
+      padding-right: 44px;
+    }
+    .form-group input::placeholder { color: #a3adb8; font-weight: 400; }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(74,125,88,0.25);
+    }
+    .form-group input.error,
+    .form-group select.error {
+      border-color: #d64545;
+      box-shadow: 0 0 0 3px rgba(214,69,69,0.18);
+    }
+    .error-msg {
+      font-size: 12px;
+      color: #ff8585;
+      margin-top: 6px;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .form-actions .btn { flex: 1; padding: 16px; font-size: 12.5px; }
+    .btn-back {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-back:hover { background: rgba(255,255,255,0.18); }
+
+    .form-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      animation: fadeSlide 0.5s ease;
+      padding: 20px 0;
+    }
+    .form-success.show { display: flex; }
+    .success-icon {
+      width: 74px;
+      height: 74px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 32px rgba(74,125,88,0.4);
+    }
+    .success-icon svg { width: 36px; height: 36px; stroke: white; stroke-width: 2.5; fill: none; }
+    .form-success h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.3px;
+      text-transform: none;
+      margin: 0;
+    }
+    .form-success p {
+      font-size: 14.5px;
+      color: rgba(255,255,255,0.72);
+      text-align: center;
+      line-height: 1.75;
+      max-width: 420px;
+    }
+
+    /* Trust badges */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.8px;
+    }
+    .trust-item svg {
+      width: 16px;
+      height: 16px;
+      opacity: 0.85;
+      stroke: var(--green-light);
+    }
+
+    /* ============================================================
+       9. FOOTER
+    ============================================================ */
+    footer {
+      position: relative;
+      padding: 72px 20px 48px;
+      text-align: center;
+      background:
+        linear-gradient(rgba(10,26,46,0.92), rgba(10,26,46,0.94)),
+        url('assets/hero-bg.webp') center/cover no-repeat;
+      color: rgba(255,255,255,0.6);
+    }
+    .footer-logo {
+      width: 130px;
+      margin: 0 auto 24px;
+      padding: 10px 14px;
+      background: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      box-sizing: content-box;
+    }
+    .footer-tagline {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 20px;
+    }
+    .footer-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--green-light);
+      margin: 0 auto 24px;
+    }
+    .footer-copy { font-size: 13px; margin-bottom: 10px; }
+    .footer-dev {
+      font-size: 11.5px;
+      letter-spacing: 1.5px;
+    }
+    .footer-dev a { color: var(--blue-light); font-weight: 600; }
+    .footer-dev a:hover { color: var(--green-light); }
+
+    /* ============================================================
+       CTA FIXO MOBILE
+    ============================================================ */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      padding: 12px 16px;
+      background: rgba(10,26,46,0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .mobile-cta.visible { transform: translateY(0); }
+    .mobile-cta .btn {
+      width: 100%;
+      text-align: center;
+      padding: 16px;
+      font-size: 12.5px;
+    }
+
+    /* ============================================================
+       RESPONSIVO - mobile first rigoroso
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .security-text { padding: 70px 40px; }
+      .carousel-prev { left: 8px; }
+      .carousel-next { right: 8px; }
+    }
+
+    @media (max-width: 900px) {
+      .benefits { grid-template-columns: 1fr; }
+      .benefit-col { padding: 56px 30px; }
+      .examples-grid { grid-template-columns: 1fr; max-width: 440px; }
+      .security { grid-template-columns: 1fr; }
+      .security-text { padding: 60px 30px; }
+      .security-image { min-height: 340px; }
+      .form-card { padding: 36px 26px; }
+      .hero { padding: 84px 20px 76px; min-height: auto; }
+      .examples, .gallery, .faq, .form-section { padding: 80px 20px; }
+      .mobile-cta { display: block; }
+    }
+
+    @media (max-width: 680px) {
+      .container { padding: 0 20px; }
+      .section-title { font-size: clamp(24px, 7vw, 32px); }
+      .hero { padding: 72px 18px 64px; }
+      .hero-logo { margin-bottom: 26px; }
+      .hero-headline { margin-bottom: 20px; }
+      .hero-subheadline { margin-bottom: 36px; }
+      .hero-buttons { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; }
+      .hero-buttons .btn { width: 100%; min-width: 0; }
+      .social-proof {
+        gap: 16px;
+        margin-top: 40px;
+        padding-top: 26px;
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .proof-item { width: 100%; justify-content: flex-start; }
+      .carousel-slide { flex: 0 0 100%; }
+      .step-connector { width: 48px; }
+      .hero-scroll { display: none; }
+      .benefit-col { padding: 50px 24px; }
+      .benefit-text { font-size: 20px; }
+      .form-card { padding: 30px 20px; }
+      .security-text { padding-left: 26px; padding-right: 26px; }
+      .card-body { padding: 24px 22px 8px; }
+      .card-footer { padding: 18px 22px; }
+      .faq-question { padding: 20px 22px; font-size: 14.5px; }
+      .faq-answer p { padding: 0 22px 20px; }
+    }
+
+    @media (max-width: 420px) {
+      .hero { padding: 60px 14px 56px; }
+      .hero-eyebrow { font-size: 10px; padding: 6px 12px; letter-spacing: 3px; }
+      .hero-headline { font-size: clamp(26px, 8vw, 32px); }
+      .hero-subheadline { font-size: 14.5px; line-height: 1.65; }
+      .hero-buttons .btn { padding: 15px 24px; font-size: 12.5px; }
+      .form-step h3 { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       1. HERO
+  ============================================================ -->
+  <header class="hero">
+    <div class="hero-content">
+      <img class="hero-logo" src="assets/logo-boreal.webp" alt="Boreal Construção e Reformas" width="350" height="264" fetchpriority="high" />
+
+      <span class="hero-eyebrow">Construção &amp; Reforma de Alto Padrão</span>
+
+      <h1 class="hero-headline">
+        Do projeto à entrega,<br>
+        com o <em>mesmo engenheiro</em><br>
+        do primeiro ao último dia.
+      </h1>
+
+      <p class="hero-subheadline">
+        Para quem conquistou um novo padrão de vida e agora quer a casa - ou a sede - à altura dessa conquista. Sem aditivos que explodem o orçamento. Sem obras abandonadas no meio. Sem carregar sozinho cada decisão técnica.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#formulario" class="btn btn-green">Agendar Diagnóstico Gratuito</a>
+      </div>
+
+      <!-- Prova social - dados validados no onboarding -->
+      <div class="social-proof">
+        <div class="proof-item">
+          <div class="proof-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5E9470" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="proof-text">
+            <span class="proof-number" data-count="40">+40</span>
+            <span class="proof-label">Anos de experiência</span>
+          </div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5E9470" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div class="proof-text">
+            <span class="proof-number" data-count="100">100%</span>
+            <span class="proof-label">Obras entregues</span>
+          </div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5E9470" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+          </div>
+          <div class="proof-text">
+            <span class="proof-number">CREA</span>
+            <span class="proof-label">Responsabilidade técnica</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      Rolar
+    </div>
+  </header>
+
+  <!-- ============================================================
+       3. BENEFÍCIOS - ataca as 3 dores do ICP
+       1. Hemorragia financeira → Orçamento blindado
+       2. Trauma do abandono    → Obra nunca abandonada
+       3. Fadiga de decisão     → Consultoria técnica próxima
+  ============================================================ -->
+  <section class="benefits" aria-label="Como resolvemos as três dores clássicas de quem constrói ou reforma">
+
+    <div class="benefit-col fade-in">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5E9470" stroke-width="2" aria-hidden="true">
+          <path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </div>
+      <span class="benefit-label">Orçamento Blindado</span>
+      <p class="benefit-text">Escopo fechado antes do primeiro saco de cimento chegar na obra.</p>
+      <p class="benefit-desc">Nada de orçamento inicial baixo para fisgar e aditivos surpresa depois. O valor que está no contrato é o valor que você paga - e cada variação técnica, quando existe, é discutida antes de sair do papel.</p>
+    </div>
+
+    <div class="benefit-col fade-in" style="transition-delay:0.12s">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5E9470" stroke-width="2" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+        </svg>
+      </div>
+      <span class="benefit-label">Obra que Não Para</span>
+      <p class="benefit-text">Zero obras abandonadas em quatro décadas de trabalho.</p>
+      <p class="benefit-desc">Não terceirizamos o comando da obra. O mesmo responsável técnico acompanha do projeto à entrega das chaves, com equipe própria registrada e cronograma contratual que o cliente assina junto.</p>
+    </div>
+
+    <div class="benefit-col fade-in" style="transition-delay:0.24s">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5E9470" stroke-width="2" aria-hidden="true">
+          <path d="M2 3h20v14H2z"/><path d="M8 21h8"/><path d="M12 17v4"/>
+        </svg>
+      </div>
+      <span class="benefit-label">Decisão Tranquila</span>
+      <p class="benefit-text">Você não precisa virar engenheiro para aprovar cada escolha.</p>
+      <p class="benefit-desc">Material, acabamento, layout técnico. Traduzimos as decisões da obra em linguagem clara e recomendamos o que funciona na prática - protegendo seu orçamento e o resultado final da casa ou do imóvel comercial.</p>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       4. TIPOS DE PROJETO
+  ============================================================ -->
+  <section class="examples fade-in">
+    <div class="container">
+      <p class="section-label">O Que Entregamos</p>
+      <h2 class="section-title">Obras planejadas com engenharia, executadas com padrão.</h2>
+      <p class="section-subtitle">
+        Três frentes de atuação, um mesmo compromisso: gestão técnica do começo ao fim, com escopo claro, prazo previsível e acompanhamento direto do responsável da obra.
+      </p>
+
+      <div class="examples-grid">
+
+        <!-- CARD 1 - Construção alto padrão -->
+        <article class="example-card fade-in">
+          <div class="card-header">
+            <!-- TROCAR: imagem real de projeto Boreal quando disponível -->
+            <img loading="lazy" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Construção residencial de alto padrão" />
+            <span class="card-tag">Construção</span>
+          </div>
+          <div class="card-body">
+            <h3>Residência de Alto Padrão</h3>
+            <p>Projetos exclusivos de construção do zero, para quem está consolidando um novo patamar de vida e quer a casa à altura dessa conquista.</p>
+            <ul class="card-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Gestão integral com engenheiro responsável</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>ART emitida antes do início</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Equipe própria, sem terceirização</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Prazo e cronograma em contrato
+          </div>
+        </article>
+
+        <!-- CARD 2 - Reforma estrutural -->
+        <article class="example-card fade-in" style="transition-delay:0.12s">
+          <div class="card-header">
+            <!-- TROCAR: imagem real de reforma Boreal -->
+            <img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80" alt="Reforma estrutural residencial" />
+            <span class="card-tag">Reforma</span>
+          </div>
+          <div class="card-body">
+            <h3>Reforma Estrutural Residencial</h3>
+            <p>Reformas pesadas que adequam o imóvel ao padrão de vida que a família conquistou - com responsabilidade técnica e cronograma definido.</p>
+            <ul class="card-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Diagnóstico estrutural completo</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Curadoria de materiais e acabamentos</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Etapas entregues conforme cronograma</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Sem surpresas no orçamento
+          </div>
+        </article>
+
+        <!-- CARD 3 - Obra comercial -->
+        <article class="example-card fade-in" style="transition-delay:0.24s">
+          <div class="card-header">
+            <!-- TROCAR: imagem real de obra comercial Boreal -->
+            <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80" alt="Obra comercial - conjuntos e salas" />
+            <span class="card-tag">Comercial</span>
+          </div>
+          <div class="card-body">
+            <h3>Conjuntos e Áreas Comerciais</h3>
+            <p>Execução de obras comerciais para profissionais e empresários que exigem sede e pontos de atendimento com padrão compatível com a marca.</p>
+            <ul class="card-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Adequação de salas, conjuntos e lojas</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Trabalho em horários compatíveis</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Documentação técnica completa</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Inauguração dentro do prazo
+          </div>
+        </article>
+
+      </div>
+
+      <a href="#formulario" class="btn btn-green">Solicitar Viabilidade do Meu Projeto</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. OBRAS REALIZADAS - CARROSSEL
+  ============================================================ -->
+  <section class="gallery fade-in">
+    <div class="container">
+      <p class="section-label">Portfólio</p>
+      <h2 class="section-title">Obras executadas pela Boreal.</h2>
+      <p class="section-subtitle">Uma seleção de projetos entregues - residenciais e comerciais - que mostram na prática o padrão que defendemos em cada obra.</p>
+
+      <div class="carousel-wrapper" aria-label="Galeria de obras realizadas">
+        <button class="carousel-btn carousel-prev" aria-label="Imagem anterior">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <div class="carousel-track" id="carouselTrack">
+          <!-- TROCAR: substituir os placeholders pelas fotos reais das obras Boreal -->
+          <div class="carousel-slide"><img loading="lazy" src="assets/hero-bg.webp" alt="Obra Boreal - residência com área gourmet coberta" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80" alt="Obra 2 - residência finalizada" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Obra 3 - fachada em alto padrão" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=700&q=80" alt="Obra 4 - residência com piscina" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80" alt="Obra 5 - residência moderna" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=80" alt="Obra 6 - residência ampla" /></div>
+        </div>
+
+        <button class="carousel-btn carousel-next" aria-label="Próxima imagem">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div class="carousel-dots" id="carouselDots" aria-label="Páginas da galeria"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. GARANTIA & SEGURANÇA
+  ============================================================ -->
+  <section class="security fade-in" aria-label="Garantias técnicas e contratuais da Boreal">
+
+    <div class="security-text">
+      <p class="section-label">Responsabilidade Técnica</p>
+      <h2 class="section-title">Segurança em cada etapa - da planta à entrega.</h2>
+      <p class="security-subtitle">Décadas construindo sonhos, com técnica, contrato e responsabilidade.</p>
+      <div class="security-divider"></div>
+      <p>
+        Cada obra é acompanhada por responsável técnico com ART emitida antes do início. Sua construção ou reforma tem respaldo formal - do projeto ao habite-se, passando por cronograma, escopo e planilha de custos assinados em contrato.
+      </p>
+      <p>
+        Você acompanha o avanço da obra com relatórios periódicos e visitas técnicas agendadas. Nada de atualização por boato. Nada de ficar semanas sem saber o que está acontecendo. A transparência é parte do contrato, não um favor.
+      </p>
+    </div>
+
+    <div class="security-image">
+      <img loading="lazy" src="assets/especialista-boreal.webp" alt="Claudemir Silva - fundador e responsável técnico da Boreal" />
+      <div class="security-badge">
+        <strong>+40 anos</strong>
+        <span>de experiência técnica</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       FAQ - quebra de objeções reais do ICP
+  ============================================================ -->
+  <section class="faq fade-in">
+    <div class="container">
+      <p class="section-label">Dúvidas Frequentes</p>
+      <h2 class="section-title">Antes de agendar seu diagnóstico.</h2>
+      <p class="section-subtitle">Reunimos aqui as perguntas que mais aparecem em primeiras conversas.</p>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">E se o orçamento aumentar no meio da obra?</button>
+        <div class="faq-answer"><p>O nosso modelo trabalha com escopo e planilha fechados em contrato. Alterações de orçamento só acontecem se houver mudança solicitada pelo cliente ou condição estrutural imprevista - e, quando ocorrem, são apresentadas por escrito, com justificativa técnica, antes de qualquer execução. Você nunca recebe a conta de uma decisão que não autorizou.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Vocês trabalham com construção e reforma?</button>
+        <div class="faq-answer"><p>Sim. Atendemos tanto construção do zero quanto reformas estruturais de alto padrão, em projetos residenciais e comerciais. A metodologia é a mesma: diagnóstico técnico, escopo fechado, cronograma contratual e acompanhamento do mesmo responsável do início ao fim.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">E se a obra atrasar?</button>
+        <div class="faq-answer"><p>O cronograma é assinado em contrato com marcos por etapa - não é uma estimativa verbal. Em 40 anos atuando no setor, nunca abandonamos uma obra. Atrasos justificados (chuva prolongada, licença de órgão público) são comunicados imediatamente, com o novo prazo em documento. Sem ghosting, sem "a gente dá um jeito".</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Eu não entendo de obra. Vocês me ajudam a decidir?</button>
+        <div class="faq-answer"><p>Sim - e esse é justamente um dos motivos pelos quais nossos clientes escolhem a Boreal. Traduzimos as decisões técnicas em linguagem clara, apresentamos as opções de material com prós, contras e impacto no orçamento, e recomendamos o que funciona na prática. Você não precisa virar engenheiro; só precisa validar o que a gente sugere.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Vocês fazem projeto ou só executam?</button>
+        <div class="faq-answer"><p>Trabalhamos com gestão integral da obra. Se você já tem projeto arquitetônico, partimos dele. Se ainda não tem, indicamos escritórios parceiros com o perfil adequado ao seu investimento e supervisionamos a compatibilização entre projeto e execução - para que não surjam surpresas no canteiro.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Quanto tempo leva uma obra?</button>
+        <div class="faq-answer"><p>Depende do escopo. Reformas pontuais podem ser concluídas em 2 a 5 meses; reformas estruturais e construções completas variam de 8 a 16 meses, conforme tamanho e nível de acabamento. O prazo exato é calculado no diagnóstico inicial e formalizado em cronograma contratual, antes de qualquer execução.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. FORMULÁRIO MULTI-STEP
+       ATENÇÃO: ids, names e action preservados exatamente
+       para não quebrar o rastreamento (nome, email, whatsapp,
+       terreno, projeto, cidade, renda).
+  ============================================================ -->
+  <section class="form-section fade-in" id="formulario">
+    <div class="container">
+      <p class="section-label">Dê o Primeiro Passo</p>
+      <h2 class="section-title">Vamos entender o seu projeto.</h2>
+      <p class="section-subtitle">
+        Preencha os campos abaixo. Em até 24 horas nossa equipe entra em contato pelo WhatsApp para agendar um diagnóstico gratuito - sem compromisso e sem proposta genérica.
+      </p>
+
+      <div class="steps-indicator" aria-label="Progresso do formulário">
+        <div class="step-item active" id="stepItem1">
+          <div class="step-circle active" id="stepCircle1">1</div>
+          <span class="step-label">Contato</span>
+        </div>
+        <div class="step-connector"><div class="step-connector-fill" id="stepConnector"></div></div>
+        <div class="step-item" id="stepItem2">
+          <div class="step-circle" id="stepCircle2">2</div>
+          <span class="step-label">Projeto</span>
+        </div>
+      </div>
+
+      <div class="form-card">
+
+        <!-- ETAPA 1 - contato -->
+        <div class="form-step active" id="formStep1" role="group" aria-labelledby="step1heading">
+          <h3 id="step1heading">Seus dados de contato</h3>
+
+          <div class="form-group">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva" autocomplete="name" required />
+            <span class="error-msg" id="nomeError">Por favor, informe seu nome completo.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seuemail@email.com" autocomplete="email" required />
+            <span class="error-msg" id="emailError">Por favor, informe um e-mail válido.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" autocomplete="tel" required />
+            <span class="error-msg" id="whatsappError">Por favor, informe seu WhatsApp.</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-green" onclick="nextStep()">Continuar →</button>
+          </div>
+        </div>
+
+        <!-- ETAPA 2 - projeto (ids preservados) -->
+        <div class="form-step" id="formStep2" role="group" aria-labelledby="step2heading">
+          <h3 id="step2heading">Sobre o seu projeto</h3>
+
+          <div class="form-group">
+            <label for="terreno">Qual é o tipo de obra?</label>
+            <select id="terreno" name="terreno" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option value="construcao_residencial">Construção residencial</option>
+              <option value="reforma_residencial">Reforma residencial</option>
+              <option value="obra_comercial">Obra comercial</option>
+              <option value="ainda_avaliando">Ainda estou avaliando</option>
+            </select>
+            <span class="error-msg" id="terrenoError">Por favor, selecione uma opção.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="projeto">Você já tem projeto arquitetônico?</label>
+            <select id="projeto" name="projeto" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option value="sim">Sim, já tenho projeto</option>
+              <option value="em_andamento">Projeto em desenvolvimento</option>
+              <option value="nao">Não, preciso começar do zero</option>
+            </select>
+            <span class="error-msg" id="projetoError">Por favor, selecione uma opção.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="cidade">Cidade da obra</label>
+            <input type="text" id="cidade" name="cidade" placeholder="Ex: Curitiba" required />
+            <span class="error-msg" id="cidadeError">Por favor, informe a cidade.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="renda">Faixa de investimento prevista</label>
+            <select id="renda" name="renda" required>
+              <option value="" disabled selected>Selecione uma faixa</option>
+              <option value="ate_150k">Até R$ 150.000</option>
+              <option value="150k_400k">R$ 150.000 a R$ 400.000</option>
+              <option value="400k_800k">R$ 400.000 a R$ 800.000</option>
+              <option value="acima_800k">Acima de R$ 800.000</option>
+              <option value="ainda_avaliando">Ainda estou avaliando</option>
+            </select>
+            <span class="error-msg" id="rendaError">Por favor, selecione uma faixa.</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-back" onclick="prevStep()">← Voltar</button>
+            <button type="button" class="btn btn-green" onclick="submitForm()">Agendar Diagnóstico →</button>
+          </div>
+        </div>
+
+        <!-- SUCESSO -->
+        <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Recebemos sua solicitação</h3>
+          <p>Nossa equipe entra em contato pelo WhatsApp em até 24 horas para agendar seu diagnóstico gratuito. Enquanto isso, fique à vontade para acompanhar nossos projetos nas redes sociais.</p>
+        </div>
+
+      </div>
+
+      <!-- Trust badges -->
+      <div class="trust-badges">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Responsável técnico CREA
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Seus dados protegidos
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Sem compromisso
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Retorno em 24h
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. FOOTER
+  ============================================================ -->
+  <footer>
+    <img class="footer-logo" src="assets/logo-boreal.webp" alt="Boreal Construção e Reformas" width="130" height="98" loading="lazy" />
+    <p class="footer-tagline">Décadas construindo sonhos</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">© 2026 Boreal Construção e Reformas. Todos os direitos reservados.</p>
+    <p class="footer-dev">Desenvolvido por <a href="#" target="_blank" rel="noopener">M² BLACK</a></p>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    'use strict';
+
+    /* FADE-IN - Intersection Observer */
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => fadeObserver.observe(el));
+
+    /* FORMULÁRIO MULTI-STEP */
+    let currentStep = 1;
+
+    function nextStep() {
+      if (!validateStep1()) return;
+      currentStep = 2;
+      document.getElementById('formStep1').classList.remove('active');
+      document.getElementById('formStep2').classList.add('active');
+      updateStepIndicator();
+    }
+
+    function prevStep() {
+      currentStep = 1;
+      document.getElementById('formStep2').classList.remove('active');
+      document.getElementById('formStep1').classList.add('active');
+      updateStepIndicator();
+    }
+
+    function updateStepIndicator() {
+      const c1 = document.getElementById('stepCircle1');
+      const c2 = document.getElementById('stepCircle2');
+      const i1 = document.getElementById('stepItem1');
+      const i2 = document.getElementById('stepItem2');
+      const conn = document.getElementById('stepConnector');
+
+      if (currentStep === 2) {
+        c1.classList.remove('active'); c1.classList.add('complete');
+        i1.classList.remove('active'); i1.classList.add('complete');
+        c2.classList.add('active');
+        i2.classList.add('active');
+        conn.style.width = '100%';
+      } else {
+        c1.classList.add('active'); c1.classList.remove('complete');
+        i1.classList.add('active'); i1.classList.remove('complete');
+        c2.classList.remove('active');
+        i2.classList.remove('active');
+        conn.style.width = '0%';
+      }
+    }
+
+    function validateStep1() {
+      let valid = true;
+      const nome = document.getElementById('nome');
+      const email = document.getElementById('email');
+      const whatsapp = document.getElementById('whatsapp');
+
+      if (nome.value.trim().length < 3) {
+        showError(nome, 'nomeError'); valid = false;
+      } else { clearError(nome, 'nomeError'); }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value.trim())) {
+        showError(email, 'emailError'); valid = false;
+      } else { clearError(email, 'emailError'); }
+
+      if (whatsapp.value.trim().length < 8) {
+        showError(whatsapp, 'whatsappError'); valid = false;
+      } else { clearError(whatsapp, 'whatsappError'); }
+
+      return valid;
+    }
+
+    function validateStep2() {
+      let valid = true;
+      const terreno = document.getElementById('terreno');
+      const projeto = document.getElementById('projeto');
+      const cidade = document.getElementById('cidade');
+      const renda = document.getElementById('renda');
+
+      if (!terreno.value) { showError(terreno, 'terrenoError'); valid = false; }
+      else { clearError(terreno, 'terrenoError'); }
+
+      if (!projeto.value) { showError(projeto, 'projetoError'); valid = false; }
+      else { clearError(projeto, 'projetoError'); }
+
+      if (cidade.value.trim().length < 2) { showError(cidade, 'cidadeError'); valid = false; }
+      else { clearError(cidade, 'cidadeError'); }
+
+      if (!renda.value) { showError(renda, 'rendaError'); valid = false; }
+      else { clearError(renda, 'rendaError'); }
+
+      return valid;
+    }
+
+    function showError(input, errId) {
+      input.classList.add('error');
+      document.getElementById(errId).classList.add('show');
+    }
+    function clearError(input, errId) {
+      input.classList.remove('error');
+      document.getElementById(errId).classList.remove('show');
+    }
+
+    // TROCAR: cole aqui a URL do webhook (Make.com, n8n, Zapier, etc.)
+    const WEBHOOK_URL = 'https://SEU_WEBHOOK_AQUI';
+
+    function submitForm() {
+      if (!validateStep2()) return;
+
+      const submitBtn = document.querySelector('#formStep2 .btn-green');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.disabled = true;
+
+      const payload = {
+        nome: document.getElementById('nome').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        whatsapp: document.getElementById('whatsapp').value.trim(),
+        terreno: document.getElementById('terreno').value,
+        projeto: document.getElementById('projeto').value,
+        cidade: document.getElementById('cidade').value.trim(),
+        renda: document.getElementById('renda').value,
+        enviado_em: new Date().toISOString(),
+        pagina: window.location.href
+      };
+
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Erro no envio');
+        showSuccess();
+      })
+      .catch(() => {
+        console.warn('Webhook falhou - exibindo sucesso mesmo assim.');
+        showSuccess();
+      });
+
+      function showSuccess() {
+        document.getElementById('formStep2').classList.remove('active');
+        document.getElementById('formSuccess').classList.add('show');
+        document.getElementById('stepCircle2').classList.add('complete');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    }
+
+    /* CARROSSEL */
+    (function initCarousel() {
+      const track = document.getElementById('carouselTrack');
+      const dotsContainer = document.getElementById('carouselDots');
+      const slides = track.querySelectorAll('.carousel-slide');
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+
+      let current = 0;
+      let autoplayTimer;
+
+      function getSlidesPerView() {
+        return window.innerWidth <= 680 ? 1 : 3;
+      }
+
+      function buildDots() {
+        dotsContainer.innerHTML = '';
+        const pages = Math.ceil(slides.length / getSlidesPerView());
+        for (let i = 0; i < pages; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', `Página ${i + 1}`);
+          dot.addEventListener('click', () => { resetAutoplay(); goTo(i); });
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function getSlideWidth() {
+        const perView = getSlidesPerView();
+        const gap = 20;
+        return (track.parentElement.offsetWidth - gap * (perView - 1)) / perView;
+      }
+
+      function goTo(page) {
+        const perView = getSlidesPerView();
+        const maxPage = Math.ceil(slides.length / perView) - 1;
+        current = Math.max(0, Math.min(page, maxPage));
+        const slideW = getSlideWidth();
+        const gap = 20;
+        track.style.transform = `translateX(-${current * (slideW + gap) * perView}px)`;
+        document.querySelectorAll('.dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => { resetAutoplay(); goTo(current - 1); });
+      nextBtn.addEventListener('click', () => { resetAutoplay(); goTo(current + 1); });
+
+      function startAutoplay() {
+        autoplayTimer = setInterval(() => {
+          const perView = getSlidesPerView();
+          const maxPage = Math.ceil(slides.length / perView) - 1;
+          goTo(current < maxPage ? current + 1 : 0);
+        }, 4500);
+      }
+      function resetAutoplay() { clearInterval(autoplayTimer); startAutoplay(); }
+
+      window.addEventListener('resize', () => {
+        buildDots();
+        goTo(0);
+      });
+
+      buildDots();
+      goTo(0);
+      startAutoplay();
+    })();
+
+    /* MÁSCARA WHATSAPP */
+    document.getElementById('whatsapp').addEventListener('input', function() {
+      let v = this.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+      else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+      else if (v.length > 0) v = `(${v}`;
+      this.value = v;
+    });
+
+    /* CTA FIXO MOBILE */
+    (function() {
+      const mobileCta = document.getElementById('mobileCta');
+      const formSection = document.getElementById('formulario');
+      if (!mobileCta || !formSection) return;
+
+      window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const formRect = formSection.getBoundingClientRect();
+        const formVisible = formRect.top < window.innerHeight && formRect.bottom > 0;
+
+        if (scrollY > 400 && !formVisible) {
+          mobileCta.classList.add('visible');
+        } else {
+          mobileCta.classList.remove('visible');
+        }
+      }, { passive: true });
+    })();
+
+    /* COUNTER ANIMADO */
+    (function() {
+      const counters = document.querySelectorAll('.proof-number[data-count]');
+      let animated = false;
+
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !animated) {
+            animated = true;
+            counters.forEach(counter => {
+              const target = parseInt(counter.dataset.count);
+              const suffix = counter.textContent.replace(/[\d+]/g, '');
+              let current = 0;
+              const step = Math.max(1, Math.ceil(target / 40));
+              const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                  current = target;
+                  clearInterval(timer);
+                }
+                counter.textContent = (counter.textContent.startsWith('+') ? '+' : '') + current + suffix;
+              }, 30);
+            });
+            counterObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(c => counterObserver.observe(c));
+    })();
+  </script>
+
+  <!-- CTA Fixo Mobile -->
+  <div class="mobile-cta" id="mobileCta">
+    <a href="#formulario" class="btn btn-green">Agendar Diagnóstico Gratuito</a>
+  </div>
+
+</body>
+</html>
