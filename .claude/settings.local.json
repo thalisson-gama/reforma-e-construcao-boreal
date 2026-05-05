@@ -9,7 +9,18 @@
       "Read(//c/Users/Pedro Rafachine/AppData/Roaming/Claude/**)",
       "Bash(grep -v \"^total\\\\|^d.*\\\\.$\\\\|^d.*\\\\.\\\\.$\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000/)",
-      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:8000/)"
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:8000/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:8000/assets/card-construcao.webp)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:8000/assets/card-reforma.webp)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:8000/assets/card-comercial.webp)",
+      "Bash(curl -s -o /dev/null -w \"INDEX %{http_code}\\\\n\" http://localhost:8000/)",
+      "Bash(curl -s -o /dev/null -w \"CONST %{http_code}\\\\n\" http://localhost:8000/assets/card-construcao.webp)",
+      "Bash(curl -s -o /dev/null -w \"REFOR %{http_code}\\\\n\" http://localhost:8000/assets/card-reforma.webp)",
+      "Bash(curl -s -o /dev/null -w \"COMER %{http_code}\\\\n\" http://localhost:8000/assets/card-comercial.webp)",
+      "Read(//c/Users/Pedro Rafachine/Documents/M2Black/**)",
+      "Bash(mkdir -p \"Boreal-source\")",
+      "Bash(mv \"Boreal/base\" \"Boreal-source/base\")",
+      "Bash(mv \"Boreal/convert-webp.py\" \"Boreal-source/convert-webp.py\")"
     ]
   }
 }
